@@ -6,7 +6,7 @@
 
     <groupId>org.abego.stringpool</groupId>
     <artifactId>abego-stringpool</artifactId>
-    <version>0.1.0-SNAPSHOT</version>
+    <version>0.1.0</version>
     
     <name>abego-stringpool</name>
     <description>abego StringPool - Manage sets of `String`s, with an implementation that uses a compact text representation.</description>
