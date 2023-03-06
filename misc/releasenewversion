@@ -127,11 +127,11 @@ echo "Automatic part of releasing ${version} completed."
 
 # --- get the path to the local Maven repository --------------------------
 m2repoDir=`mvn help:evaluate -Dexpression=settings.localRepository | grep -E '^([a-zA-Z]:|/)'`
-m2releaseDir="${m2repoDir}/org/abego/springpool/abego-springpool/${version}/"
+m2releaseDir="${m2repoDir}/org/abego/stringpool/abego-stringpool/${version}/"
 
 echo
 echo "    Remaining manual steps:"
-echo "        - on https://github.com/abego/abego-springpool/releases"
+echo "        - on https://github.com/abego/abego-stringpool/releases"
 echo "           - Create a new release ${version}"
 echo "           - Copy the CHANGELOG entry for ${version} to the server"
 echo "           - Add all files from local Maven repo to release on GitHub"
@@ -139,4 +139,4 @@ echo "           - Add all files from local Maven repo to release on GitHub"
 read -p "Press Return to open GitHub, CHANGELOG and local Maven repo directory:"
 open "${m2releaseDir}"
 open "CHANGELOG.md"
-open "https://github.com/abego/abego-springpool/releases"
+open "https://github.com/abego/abego-stringpool/releases"
