@@ -45,6 +45,17 @@ public interface StringPoolBuilder {
     int add(@Nullable String string);
 
     /**
+     * Returns the ID the next call to {@link #add(String)} would return.
+     * <p>
+     * One use case for this method is "change-detection": remember the nextID,
+     * then do some operations that potentially may call the builder and add
+     * more strings. When you later compare the current nextID with the 
+     * remembered one you will know it the builder changed in the meanwhile 
+     * (remembered nextID != current nextID), or not.
+     */
+    int nextID();
+    
+    /**
      * Joining the <code>stringParts</code> to one string, add that string
      * to the builder and return the ID of the just added String.
      * <p>

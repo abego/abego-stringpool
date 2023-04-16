@@ -39,6 +39,7 @@ import java.util.stream.Collectors;
 import static org.abego.stringpool.StringPoolBuilderDefault.newStringPoolBuilderDefault;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -329,6 +330,30 @@ class StringPoolTest {
         assertTrue(spb.contains("Hello"));
         assertFalse(spb.contains("World"));
     }
+
+    @Test
+    void nextID() {
+        StringPoolBuilder spb = newStringPoolBuilder();
+
+        spb.add("Hello");
+        spb.add("world");
+        
+        int nextID1 = spb.nextID();
+        
+        // When nothing happened with the builder the nextID is unchanged.
+        assertEquals(nextID1, spb.nextID());
+
+        // Adding a string that already exists in the string pool does not
+        // change the builder, i.e. the nextID is unchanged.
+        spb.add("Hello");
+        assertEquals(nextID1, spb.nextID());
+
+        // Adding a new string that did not yet exist in the string pool does
+        // change the builder, i.e. the nextID is changed, too.
+        spb.add("Dolly");
+        assertNotEquals(nextID1, spb.nextID());
+    }
+
 
     /**
      * Sorts the texts of the {@code iterable}'s items (as defined by

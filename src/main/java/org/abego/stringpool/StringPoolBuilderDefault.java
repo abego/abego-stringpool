@@ -82,6 +82,11 @@ final class StringPoolBuilderDefault implements StringPoolBuilder {
     }
 
     @Override
+    public int nextID() {
+        return allStringsByteStream.size();
+    }
+
+    @Override
     public int addJoined(@Nullable String... stringParts) {
         String string = joinedString(stringParts);
         if (string == null) {
