@@ -87,9 +87,7 @@ public interface StringPoolBuilder {
      * @param stringParts the parts to be joined to construct the {@link String}
      *                    to be added to builder.
      */
-    default int addJoined(@Nullable String... stringParts) {
-        return add(joinedString(stringParts));
-    }
+    int addJoined(@Nullable String... stringParts);
 
     @Nullable
     default String joinedString(@Nullable String... stringParts) {
